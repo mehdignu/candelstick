@@ -1,4 +1,4 @@
-import model.CandlestickManager
+import dao.DAOFacadeImpl
 import org.http4k.core.Method
 import org.http4k.core.Request
 import org.http4k.core.Response
@@ -14,7 +14,7 @@ class Server(
 ) {
 
   // TODO - invoke your implementation here
-  lateinit var  service : CandlestickManager
+  lateinit var  service : DAOFacadeImpl
 
 
   private val routes = routes(
