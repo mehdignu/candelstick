@@ -11,8 +11,6 @@ object Quotes: IntIdTable() {
     val isin = varchar("isin", 100)
     val price = float("price")
     val createdAt = datetime("created_at").default(LocalDateTime.now())
-
-
 }
 
 

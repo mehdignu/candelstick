@@ -4,10 +4,6 @@ import java.time.Instant
 
 typealias Price = Double
 
-interface CandlestickManager {
-    fun getCandlesticks(isin: String): List<Candlestick>
-}
-
 data class Candlestick(
     val openTimestamp: Instant,
     var closeTimestamp: Instant,

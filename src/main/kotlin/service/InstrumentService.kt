@@ -12,7 +12,6 @@ class InstrumentService {
         if (event.type == InstrumentEvent.Type.ADD) {
             create(event.data)
         }
-
         if (event.type == InstrumentEvent.Type.DELETE) {
             remove(event.data)
         }

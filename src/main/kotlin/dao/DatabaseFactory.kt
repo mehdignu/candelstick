@@ -1,4 +1,4 @@
-package conf
+package dao
 
 import model.Instruments
 import model.Quotes
@@ -8,7 +8,7 @@ import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.addLogger
 import org.jetbrains.exposed.sql.transactions.transaction
 
-class DatabaseConf {
+class DatabaseFactory {
     companion object{
         fun init(){
             Database.connect("jdbc:h2:mem:dev;DB_CLOSE_DELAY=-1;", "org.h2.Driver")
