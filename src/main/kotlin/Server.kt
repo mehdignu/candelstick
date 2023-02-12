@@ -1,3 +1,4 @@
+import dao.DAOFacade
 import dao.DAOFacadeImpl
 import org.http4k.core.Method
 import org.http4k.core.Request
@@ -13,8 +14,7 @@ class Server(
   port: Int = 9000,
 ) {
 
-  // TODO - invoke your implementation here
-  lateinit var  service : DAOFacadeImpl
+  lateinit var  service : DAOFacade
 
 
   private val routes = routes(
@@ -24,6 +24,7 @@ class Server(
   private val server: Http4kServer = routes.asServer(Netty(port))
 
   fun start() {
+    service = DAOFacadeImpl()
     server.start()
   }
 
@@ -31,7 +32,12 @@ class Server(
     val isin = req.query("isin")
       ?: return Response(Status.BAD_REQUEST).body("{'reason': 'missing_isin'}")
 
-    val body = jackson.writeValueAsBytes(service.getCandlesticks(isin))
+    val candlesticks =  service.getCandlesticks(isin)
+    if (candlesticks.isEmpty()){
+      return Response(Status.NOT_FOUND).body("{'reason': 'No CandleSticks data found for this isin'}")
+    }
+
+    val body = jackson.writeValueAsBytes(candlesticks)
 
     return Response(Status.OK).body(body.inputStream())
   }
