@@ -11,8 +11,8 @@ private val logger = LoggerFactory.getLogger("MainKt")
 
 fun main() {
   logger.info("starting up")
-  val instrumentService: InstrumentService = InstrumentService()
-  val quoteService: QuoteService = QuoteService()
+  val instrumentService = InstrumentService()
+  val quoteService = QuoteService()
 
   DatabaseConf.init()
 
