@@ -4,11 +4,13 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import org.slf4j.LoggerFactory
 import conf.DatabaseConf
+import service.InstrumentService
 
 private val logger = LoggerFactory.getLogger("MainKt")
 
 fun main() {
   logger.info("starting up")
+  val instrumentService: InstrumentService = InstrumentService()
 
   DatabaseConf.init()
 
@@ -18,7 +20,7 @@ fun main() {
 
 
   instrumentStream.connect { event ->
-    // TODO - implement
+    instrumentService.handleInstrumentUpdate(event)
     logger.info("Instrument: {}", event)
   }
 
