@@ -1,3 +1,4 @@
+import model.CandlestickManager
 import org.http4k.core.Method
 import org.http4k.core.Request
 import org.http4k.core.Response
