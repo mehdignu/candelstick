@@ -31,14 +31,11 @@ class Server(
   private fun getCandlesticks(req: Request): Response {
     val isin = req.query("isin")
       ?: return Response(Status.BAD_REQUEST).body("{'reason': 'missing_isin'}")
-
     val candlesticks =  service.getCandlesticks(isin)
     if (candlesticks.isEmpty()){
       return Response(Status.NOT_FOUND).body("{'reason': 'No CandleSticks data found for this isin'}")
     }
-
     val body = jackson.writeValueAsBytes(candlesticks)
-
     return Response(Status.OK).body(body.inputStream())
   }
 }

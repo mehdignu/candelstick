@@ -17,7 +17,7 @@ class InstrumentService {
         }
     }
 
-    private fun create(instrument: Instrument) {
+    fun create(instrument: Instrument) {
         transaction {
             addLogger(StdOutSqlLogger)
             Instruments.insert {
@@ -27,7 +27,7 @@ class InstrumentService {
         }
     }
 
-    private fun remove(instrument: Instrument) {
+    fun remove(instrument: Instrument) {
         transaction {
             addLogger(StdOutSqlLogger)
             Quotes.deleteWhere { Quotes.isin eq instrument.isin }

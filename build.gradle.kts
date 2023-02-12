@@ -45,6 +45,7 @@ dependencies {
   implementation("org.jetbrains.exposed:exposed-java-time:${DependencyVersions.exposedVersion}")
   implementation("org.jetbrains.exposed:exposed-dao:${DependencyVersions.exposedVersion}")
 
+
   testImplementation("io.mockk:mockk:${DependencyVersions.mockk}")
 }
 
