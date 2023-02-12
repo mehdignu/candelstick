@@ -12,7 +12,7 @@ class DAOFacadeImpl : DAOFacade {
         return getLast30MinutesCandleSticks(isin)
     }
 
-    override fun getLast30MinutesCandleSticks(isin: String):List<Candlestick> {
+    private fun getLast30MinutesCandleSticks(isin: String):List<Candlestick> {
         var candleSticks = listOf<Candlestick>()
         transaction {
             val query = """

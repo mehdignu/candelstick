@@ -24,10 +24,4 @@ object Instruments: IntIdTable() {
             isin = row[Instruments.isin],
             description = row[Instruments.description]
         )
-
-    fun getByIsin(isin: String): Instrument {
-        return select{ Instruments.isin eq isin }.map {
-                r -> Instruments.toInstrument(r)
-        }.get(0)
-    }
 }
